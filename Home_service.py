@@ -573,3 +573,4 @@ btn_delete_all_rows.grid(row=5, column=1, columnspan=1, sticky='n', padx=160, pa
 
 
 window.mainloop()
+
