@@ -41,7 +41,6 @@ def last_resit_to_now():
     return row
 
 
-
 def delete_row():
     # בדיקת אם יש שורה שנבחרה
     selected_item = table.selection()
@@ -58,7 +57,6 @@ def delete_row():
         cursor = db.cursor()
         cursor.execute("DELETE FROM home WHERE resit=?", (resit,))
         db.commit()
-    rows = cursor.fetchall()
 
     # מחיקת השורה מה-Treeview
     table.delete(selected_item)
