@@ -1,0 +1,353 @@
+/* ============================= */
+/* 1. איפוס וסגנון כללי          */
+/* ============================= */
+/* cd frontend/src/app      */
+/**/
+/*   python back/app.py    */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* מניעת חריגות בגבולות */
+}
+
+body {
+  display: flex; /* שימוש ב-Flexbox לפריסה */
+  flex-wrap: wrap; /* מאפשר חלוקה לשורות */
+  height: 100vh; /* כל העמוד בגובה מלא */
+  font-family: Arial, sans-serif; /* פונט בסיסי */
+}
+
+/* ============================= */
+/* 2. פריסת העמוד                */
+/* ============================= */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 עמודות */
+  grid-template-rows: repeat(2, 1fr); /* 2 שורות */
+  gap: 10px; /* רווח בין הריבועים */
+  height: 100vh; /* גובה מלא למסך */
+  width: 100vw; /* רוחב מלא למסך */
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* 3. עיצוב כללי של סקשן         */
+/* ============================= */
+
+.section {
+  background-color: #007bff; /* צבע רקע */
+  color: white; /* צבע טקסט */
+  font-size: 16px; /* גודל טקסט */
+  display: flex; /* למרכז את התוכן */
+  justify-content: center; /* מרכז אופקית */
+  align-items: center; /* מרכז אנכית */
+  overflow: hidden; /* חיתוך תוכן עודף */
+  width: 100%; /* הריבוע תופס את כל המרחב בתוך התאים */
+  height: 100%; /* גובה מלא בתוך כל תא */
+  max-height: calc(50vh - 10px); /* גובה מקסימלי */
+  max-width: calc(50vw - 10px); /* רוחב מקסימלי */
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* 4. עיצוב סקשן 1               */
+/* ============================= */
+
+.section1 {
+  position: relative;
+  background-color: #ff5733; /* צבע רקע */
+}
+
+.section1 label {
+  font-size: 20px; /* גודל טקסט */
+}
+
+.section1 #title {
+  position: absolute;
+  top: 10px;
+  left: 160px;
+}
+
+/* עיצוב טפסים בתוך סקשן 1 */
+.section1 .resit_form {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+}
+
+.section1 .money_form {
+  position: absolute;
+  top: 60px;
+  left: 300px;
+}
+
+.section1 .home_form {
+  position: absolute;
+  top: 120px;
+  left: 35px;
+}
+
+.section1 .day_form {
+  position: absolute;
+  top: 120px;
+  left: 320px;
+}
+
+.section1 .why_form {
+  position: absolute;
+  top: 170px;
+  left: 50px;
+}
+
+.section1 #submit {
+  position: absolute;
+  top: 170px;
+  left: 390px;
+}
+
+/* עיצוב כללי לכל הכפתורים */
+.section1 button {
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* עיצוב לכל ה-Inputs */
+.section1 input {
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* ============================= */
+/* 5. עיצוב טבלה                 */
+/* ============================= */
+
+.table-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 20px auto;
+  padding: 10px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.table1 {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* עיצוב ראש הטבלה */
+.table1 thead th {
+  background-color: #003366;
+  color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #555;
+}
+
+/* עיצוב תאי הטבלה */
+.table1 tbody td {
+  padding: 10px;
+  border: 1px solid #444;
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+/* צבעים מתחלפים */
+.table1 tbody tr:nth-child(even) {
+  background-color: #2c3e50;
+}
+
+.table1 tbody tr:nth-child(odd) {
+  background-color: #34495e;
+}
+
+.table1 tbody tr:hover {
+  background-color: #1abc9c;
+  color: #ffffff;
+}
+
+/* שורה שנבחרה */
+.table1 tbody tr.selected {
+  background-color: #00274d;
+  color: #ffffff;
+}
+
+/* עיצוב כפתורים בתוך טבלה */
+.table1 tbody td button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.table1 tbody td button:hover {
+  background-color: #c0392b;
+}
+
+/* ============================= */
+/* 6. עיצוב סלקטורים            */
+/* ============================= */
+
+.select {
+  position: relative;
+  min-width: 50px;
+}
+
+.select svg {
+  position: absolute;
+  right: 12px;
+  top: calc(50% - 3px);
+  width: 10px;
+  height: 6px;
+  stroke-width: 2px;
+  stroke: #9098a9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.select select {
+  -webkit-appearance: none;
+  padding: 7px 40px 7px 12px;
+  width: 70%;
+  border: 1px solid #e8eaed;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 1px 3px -2px #9098a9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 150ms ease;
+}
+
+/* ============================= */
+/* 7. עיצוב נוסף לסקשנים         */
+/* ============================= */
+
+.section2 {
+  background-color: #33c4ff; /* צבע כחול */
+}
+
+
+.section3 {
+  background-color: #75ff33; /* צבע ירוק */
+}
+
+
+
+.section4 {
+  background-color: #ff33c4; /* צבע ורוד */
+}
+
+/* עיצוב כללי לכל הכפתורים */
+.section4 button {
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* עיצוב לכל ה-Inputs */
+.section4 input {
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.section4 label {
+  font-size: 20px; /* גודל טקסט */
+}
+
+.section4 #title2 {
+  position: absolute;
+  top: 400px;
+  left: 1060px;
+}
+
+
+.section4 #get_form{
+  position: absolute;
+  top: 450px;
+  left: 900px;
+}
+
+.section4 .selection-info{
+  position: absolute;
+  top: 430px;
+  left: 1300px;
+}
+
+.section4 .print_form{
+  position: absolute;
+  top: 550px;
+  left: 900px;
+}
+
+.section4 #ans{
+  position: absolute;
+  top: 400px;
+  left: 800px;
+}
+
+.selection-info {
+  margin-top: 20px; /* מרווח מעל */
+  padding: 15px; /* ריווח פנימי */
+  background-color: #f7f7f7; /* צבע רקע בהיר */
+  border: 1px solid #ddd; /* גבול אפור עדין */
+  border-radius: 5px; /* פינות מעוגלות */
+  max-width: 300px; /* רוחב מקסימלי */
+  font-family: Arial, sans-serif; /* פונט בסיסי */
+}
+
+.selection-info h3 {
+  font-size: 18px; /* גודל כותרת */
+  color: #333; /* צבע כהה */
+  margin-bottom: 10px; /* ריווח תחתון */
+}
+
+.selection-info ul {
+  list-style: none; /* הסרת כדורים מהרשימה */
+  padding: 0; /* ללא ריווח פנימי */
+  margin: 0; /* ללא ריווח חיצוני */
+}
+
+.selection-info li {
+  font-size: 16px; /* גודל טקסט */
+  color: #007bff; /* צבע כחול */
+  margin-bottom: 5px; /* ריווח בין הפריטים */
+}
+

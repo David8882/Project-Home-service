@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend  # נתיב לתיקיית Flask
+    ports:
+      - "5000:5000"  # Flask API
+    environment:
+      MYSQL_HOST: mysql_container
+      MYSQL_USER: flaskuser
+      MYSQL_PASSWORD: yekw88Xfu!
+      MYSQL_DB: Home service MySQL
+    depends_on:
+      - mysql  # הבטחה ש-MySQL ירוץ קודם
+  frontend:
+    build:
+      context: ./frontend  # נתיב לתיקיית Angular
+    ports:
+      - "4200:4200"  # Angular
+    command: ng serve --host 0.0.0.0
+  mysql:
+    image: mysql:8.0  # גרסת MySQL
+    container_name: mysql_container  # שם הקונטיינר
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: yekw88Xfu!  # סיסמת root
+      MYSQL_DATABASE: Home service MySQL       # שם מסד הנתונים
+      MYSQL_USER: flaskuser              # משתמש מותאם
+      MYSQL_PASSWORD: yekw88Xfu!      # סיסמת המשתמש
+    ports:
+      - "3306:3306"  # חיבור ל-MySQL מהמחשב שלך
+    volumes:
+      - mysql_data:/var/lib/mysql  # שמירה של נתונים גם אם הקונטיינר נמחק
+
+volumes:
+  mysql_data:

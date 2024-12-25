@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 Sections Layout</title>
+</head>
+<body>
+  <div class="container">
+    <div class="section section1">
+        <h1 id="title"> Send data to backend </h1>
+        <form (submit)="postData($event)">
+          <div class="resit_form">
+             <label for="resit">Resit:</label>
+             <input type="number" id="resit" [(ngModel)]="resit" name="resit" placeholder="קבלה" />
+          </div>
+          <div class="money_form">
+            <label for="money">Money</label>
+            <input type="number" id="money" [(ngModel)]="money" name="money" />
+          </div>
+          <div class="home_form">
+            <form>
+              <label for="home">Home</label>
+              <select id="home" [(ngModel)]="home" name="home" required>
+                <option value="" disabled selected>Select option</option>
+                <option value="E1">E1</option>
+                <option value="E2">E2</option>
+                <option value="E3">E3</option>
+                <option value="E4">E4</option>
+                <option value="E5">E5</option>
+                <option value="E6">E6</option>
+                <option value="E8">E8</option>
+                <option value="E9">E9</option>
+                <option value="E10">E10</option>
+                <option value="E11">E11</option>
+                <option value="G">G</option>
+                <option value="F">F</option>
+                <option value="F+G">F+G</option>
+                <option value="_"></option>
+              </select>
+
+            </form>
+          </div>
+          <div class="day_form">
+            <label for="day">Date</label>
+            <input type="text" id="day" [(ngModel)]="day" name="day" placeholder="DD/MM/YYYY"/>
+          </div>
+          <div class="why_form">
+            <label for="why">Why</label>
+            <input type="text" id="why" [(ngModel)]="why" name="why" />
+          </div>
+
+
+
+
+          <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="section section2">
+      <div class="table-wrapper">
+        <table class="table1">
+          <thead>
+            <tr>
+              <th>מספר קבלה</th>
+              <th>סכום</th>
+              <th>דייר</th>
+              <th>תאריך</th>
+              <th>דירה</th>
+              <th>סיבת העברה</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let row of dataFrom; let i = index"
+              [class.selected]="case.includes(row.resit)"
+              (click)="selectRow(row)">
+            <td>{{ row.resit }}</td>
+            <td>{{ row.money }} </td>
+            <td>{{ row.home }} </td>
+            <td>{{ row.day }} </td>
+            <td> {{row.user}} </td>
+            <td>{{ row.why }} </td>
+            <td>
+              <button (click)="deleteResitAndRow($event,  row.resit , index)">Delete</button>
+            </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="section section3">
+      <label>Find User</label>
+
+          <div class="home_form">
+            <form>
+              <label for="find_user">Find User</label>
+              <select id="find_user" [(ngModel)]="homeId" name="find_user" required>
+                <option value="" disabled selected>Enter home ID</option>
+                <option value="E1">E1</option>
+                <option value="E2">E2</option>
+                <option value="E3">E3</option>
+                <option value="E4">E4</option>
+                <option value="E5">E5</option>
+                <option value="E6">E6</option>
+                <option value="E8">E8</option>
+                <option value="E9">E9</option>
+                <option value="E10">E10</option>
+                <option value="E11">E11</option>
+                <option value="G">G</option>
+                <option value="F">F</option>
+                <option value="F+G">F+G</option>
+                <option value="_"></option>
+              </select>
+              <button type="button" (click)="bataHome($event, homeId)">Find</button>
+
+
+            </form>
+          </div>
+
+    </div>
+
+    <div class="section section4">
+      <h1 id="title2">שולחן עבודה</h1>
+      <div id="ans">
+        <p *ngIf="responseMessage">Response: {{ responseMessage }}</p>
+      </div>
+
+      <div id="get_form">
+        <label>Get:</label>
+        <button type="button"(click)="getDataUser($event)">Get</button>
+      </div>
+      <!-- אזור להצגת מספר השורות שנבחרו -->
+      <div class="selection-info">
+        <h3>שורות שנבחרו:</h3>
+        <ul>
+          <li *ngFor="let resit of case">
+            מספר קבלה: {{ resit }}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+
+
